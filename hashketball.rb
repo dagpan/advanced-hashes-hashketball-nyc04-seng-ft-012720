@@ -7,6 +7,7 @@ def game_hash
           :team_name => "Brooklyn Nets",
           :colors => ["Black", "White"],
           :players => [{:player_name => "Alan Anderson",
+<<<<<<< HEAD
                         :number => 0,
                         :shoe => 16,
                         :points => 22,
@@ -51,10 +52,57 @@ def game_hash
                         :steals => 4,
                         :blocks => 11,
                         :slam_dunks => 1}]},
+=======
+                        :number => "0",
+                        :shoe => "16",
+                        :points => "22",
+                        :rebounts => "12",
+                        :assists => "12",
+                        :steals => "3",
+                        :blocks => "1",
+                        :slam_dunks => "1"},
+                       {:player_name => "Reggie Evans",
+                        :number => "30",
+                        :shoe => "14",
+                        :points => "12",
+                        :rebounts => "12",
+                        :assists => "12",
+                        :steals => "12",
+                        :blocks => "12",
+                        :slam_dunks => "7"},
+                       {:player_name => "Brook Lopez",
+                        :number => "11",
+                        :shoe => "17",
+                        :points => "17",
+                        :rebounts => "19",
+                        :assists => "10",
+                        :steals => "3",
+                        :blocks => "1",
+                        :slam_dunks => "15"},
+                       {:player_name => "Mason Plumlee",
+                        :number => "1",
+                        :shoe => "19",
+                        :points => "26",
+                        :rebounts => "11",
+                        :assists => "6",
+                        :steals => "3",
+                        :blocks => "8",
+                        :slam_dunks => "5"},
+                       {:player_name => "Jason Terry",
+                        :number => "31",
+                        :shoe => "15",
+                        :points => "19",
+                        :rebounts => "2",
+                        :assists => "2",
+                        :steals => "4",
+                        :blocks => "11",
+                        :slam_dunks => "1"}]},
+>>>>>>> eda044a9b7f4d18d10ca498eb8303def2b9ec2c8
        :away => {   
           :team_name => "Charlotte Hornets",
           :colors => ["Turquoise", "Purple"],
           :players => [{:player_name => "Jeff Adrien",
+<<<<<<< HEAD
                         :number => 4,
                         :shoe => 18,
                         :points => 10,
@@ -275,6 +323,181 @@ def winning_team
   end
   winning_team
 end
+=======
+                        :number => "4",
+                        :shoe => "18",
+                        :points => "10",
+                        :rebounts => "1",
+                        :assists => "1",
+                        :steals => "2",
+                        :blocks => "7",
+                        :slam_dunks => "2"},
+                       {:player_name => "Bismack Biyombo",
+                        :number => "0",
+                        :shoe => "16",
+                        :points => "12",
+                        :rebounts => "4",
+                        :assists => "7",
+                        :steals => "22",
+                        :blocks => "15",
+                        :slam_dunks => "10"},
+                       {:player_name => "DeSagna Diop",
+                        :number => "2",
+                        :shoe => "14",
+                        :points => "24",
+                        :rebounts => "12",
+                        :assists => "12",
+                        :steals => "4",
+                        :blocks => "5",
+                        :slam_dunks => "5"},
+                       {:player_name => "Ben Gordon",
+                        :number => "8",
+                        :shoe => "15",
+                        :points => "33",
+                        :rebounts => "3",
+                        :assists => "2",
+                        :steals => "1",
+                        :blocks => "1",
+                        :slam_dunks => "0"},
+                       {:player_name => "Kemba Walker",
+                        :number => "33",
+                        :shoe => "15",
+                        :points => "6",
+                        :rebounts => "12",
+                        :assists => "12",
+                        :steals => "7",
+                        :blocks => "5",
+                        :slam_dunks => "12"}]}
+   }
+ hash1
+end
+
+def num_points_scored(name = nil)
+  board = game_hash
+  players = board[:home][:players] + board[:away][:players]
+  score = nil
+  if name 
+     i = 0
+     while i < players.length
+         if players[i][:player_name] == name
+            score = players[i][:points].to_i
+         end
+         i += 1
+     end
+     if score
+        score
+     else
+        puts "No such Player"
+     end
+   end
+end
+
+def shoe_size(name = nil)
+  board = game_hash
+  players = board[:home][:players] + board[:away][:players]
+  if name 
+     i = 0
+     while i < players.length
+         if players[i][:player_name] == name
+            shoe = players[i][:shoe].to_i
+         end
+         i += 1
+     end
+     if shoe
+        shoe
+     else
+        puts "No such Player"
+     end
+   end
+end
+
+def team_colors(team = nil)
+  board = game_hash
+  if team
+     if board[:home][:team_name] == team
+        colors = board[:home][:colors]
+     end
+     if board[:away][:team_name] == team
+        colors = board[:away][:colors]
+     end
+  end
+  if colors
+     colors
+  else
+     puts "No such Team"
+  end
+end
+
+def team_names
+  board = game_hash
+  result_array = []
+  result_array << board[:home][:team_name]
+  result_array << board[:away][:team_name]
+end  
+  
+def player_numbers(team = nil)
+  board = game_hash
+  numbers = []
+  if team
+     if board[:home][:team_name] == team
+        i = 0
+        while i < board[:home][:players].length
+            numbers << board[:home][:players][i][:number].to_i
+            i += 1
+        end
+     end
+     if board[:away][:team_name] == team
+        i = 0
+        while i < board[:away][:players].length
+            numbers << board[:away][:players][i][:number].to_i
+            i += 1
+        end
+     end
+  end
+  if numbers
+     numbers
+  else
+     puts "No such Team"
+  end
+  
+end
+
+def player_stats(name = nil)
+  board = game_hash
+  players = board[:home][:players] + board[:away][:players]
+  pp players
+  pp players[0]
+  stats = {}
+  if name 
+     i = 0
+     while i < players.length
+         if players[i][:player_name] == name
+            stats[:number] = players[i][:number].to_i
+            stats[:shoe] = players[i][:shoe].to_i
+            stats[:points] = players[i][:points].to_i
+            stats[:rebounts] = players[i][:rebounts].to_i
+            stats[:assists] = players[i][:assists].to_i
+            stats[:steals] = players[i][:steals].to_i
+            stats[:blocks] = players[i][:blocks].to_i
+            stats[:slam_dunks] = players[i][:slam_dunks].to_i
+         end
+         i += 1
+     end
+     if stats
+#        stats.delete(:player_name)
+#        stats.each do |key, value|
+#            stats[key] = value.to_i
+#        end
+        stats
+     else
+        puts "No such Player"
+     end
+   end
+pp stats
+end
+
+def big_shoe_rebounds(stat = nil)
+>>>>>>> eda044a9b7f4d18d10ca498eb8303def2b9ec2c8
 
 def player_with_longest_name
   board = game_hash
@@ -318,4 +541,9 @@ def long_name_steals_a_ton?
   end
 end
 
+<<<<<<< HEAD
+=======
+
+end  
+>>>>>>> eda044a9b7f4d18d10ca498eb8303def2b9ec2c8
   
